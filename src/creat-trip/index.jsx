@@ -174,8 +174,10 @@ export default function index() {
         </Button>
         <Dialog open={openDialLog} onOpenChange={setOpenDialLog}>
           <DialogContent className='flex flex-col items-center'>
-            <img className='h-14' src={"./src/assets/reshot-icon-round-travel-flights-MD53NY9TP2.svg"} alt="Travel Icon" />
-            <h2 className='font-bold text-lg text-black mt-3'>Sign in to Continue</h2>
+          <div className='flex  items-center'>
+              <img className='h-14' src="/reshot-icon-round-travel-flights-MD53NY9TP2.svg" alt="Travel Icon" />
+              <h2 className='font-bold text-2xl'>WanderMind</h2>
+              </div>
             <p className='text-sm'>Sign in with Google to save and generate your trip</p>
 
             {/* Clerk SignIn Component - this renders the Google Sign-in UI */}

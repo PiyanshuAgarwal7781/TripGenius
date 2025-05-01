@@ -18,7 +18,7 @@ const LocationAutocomplete = ({ onChange }) => {
             console.error("Error fetching suggestions:", error);
             setSuggestions([]);
           });
-      } else {
+      }else {
         setSuggestions([]);
       }
     };
@@ -44,6 +44,7 @@ const LocationAutocomplete = ({ onChange }) => {
   return (
     <div className="relative">
       <h2 className="text-xl font-semibold mb-4">What is your destination of choice?</h2>
+      {/* user enter the location and gets auto suggestions via form  */}
       <input
         type="text"
         value={query}
@@ -51,6 +52,7 @@ const LocationAutocomplete = ({ onChange }) => {
         placeholder="Type a location..."
         className="p-2 text-base w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
       />
+      {/* suggestions div is shown when the suggetion length is greater than zero */}
       <div
         className={`absolute w-full mt-1 bg-white border border-gray-300 shadow-lg rounded-md z-10 ${
           suggestions.length > 0 ? "block" : "hidden"
@@ -66,6 +68,7 @@ const LocationAutocomplete = ({ onChange }) => {
           </div>
         ))}
       </div>
+      {/* display selected location */}
       {selectedLocation && (
         <p className="mt-4 text-base text-gray-700">
           Selected Location: <span className="font-medium">{selectedLocation}</span>

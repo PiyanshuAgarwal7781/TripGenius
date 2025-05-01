@@ -8,7 +8,7 @@ export default function BasicInfo({ trip }) {
   let [photo,setphoto]=useState({});
   useEffect(() => {
     const fetchPhotos = async () => {
-      let query = `${trip?.userSelection?.location} beaftiful location   `;
+      let query = `${trip?.userSelection?.location} beaftiful buildings`;
       let photo_url = await AiPhoto(query);
       setphoto(photo_url);
     };

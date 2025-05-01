@@ -28,7 +28,7 @@ export default function ViewMyTrip() {
             const photoMap = {};
             for (const trip of userTrip) {
                 const location = trip?.userSelection?.location;
-                const url = await AiPhoto(`${location} beaftiful street`);
+                const url = await AiPhoto(`${location} beaftiful buildings`);
                 photoMap[trip.id] = url;
             }
             setPhoto(photoMap);

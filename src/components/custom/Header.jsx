@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Popover,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { useClerk } from '@clerk/clerk-react';
 import { SignIn } from '@clerk/clerk-react';
-import { Link } from 'react-router-dom';
+
 export default function Header() {
   let user = JSON.parse(localStorage.getItem('user'));
   const { signOut } = useClerk();
@@ -25,28 +25,37 @@ export default function Header() {
 
   return (
     <div className='p-3 shadow-sm flex justify-between items-center px-5'>
-      <img className='h-12 cursor-pointer' src="/reshot-icon-round-travel-flights-MD53NY9TP2.svg" alt="logo" />
 
+      {/* left side logo and name */}
+      <div className='flex gap-1 items-center'>
+        <img className='h-12 cursor-pointer' src="/reshot-icon-round-travel-flights-MD53NY9TP2.svg" alt="logo" />
+        <h2 className='font-bold text-2xl'>WanderMind</h2>
+      </div>
+      {/* logo and name end */}
+
+      {/* if user is not login show signin or else vire trio and creat trip button along with profil image */}
+      {/* user? true:false */}
       {user ? (
         <div className='flex items-center gap-5'>
           <a href='/creat'><Button className={"rounded-full"} >+ Creat Trip</Button></a>
           <a href='/My-trip'><Button className={"rounded-full"} >My Trips</Button></a>
-          
           <Popover>
             <PopoverTrigger>
               <img src={user?.profileImage} className='h-10 rounded-full' alt="profile" />
             </PopoverTrigger>
-            <PopoverContent onClick={functionLogout} className="cursor-pointer">
-              Logout
-            </PopoverContent>
+            <PopoverContent onClick={functionLogout} className="cursor-pointer">Logout</PopoverContent>
           </Popover>
         </div>
-      ) : (
+      )  : (
         <>
           <Button onClick={() => setOpenDialog(true)}>Signin</Button>
+          {/* open and onOPenChange are inbuilt provided by dialog */}
           <Dialog open={openDialog} onOpenChange={setOpenDialog}>
             <DialogContent className='flex flex-col items-center'>
-              <img className='h-14' src="/reshot-icon-round-travel-flights-MD53NY9TP2.svg" alt="Travel Icon" />
+              <div className='flex  items-center'>
+                <img className='h-14' src="/reshot-icon-round-travel-flights-MD53NY9TP2.svg" alt="Travel Icon" />
+                <h2 className='font-bold text-2xl'>WanderMind</h2>
+              </div>
               <h2 className='font-bold text-lg text-black mt-3'>Sign in to Continue</h2>
               <p className='text-sm'>Sign in with Google to save and generate your trip</p>
 

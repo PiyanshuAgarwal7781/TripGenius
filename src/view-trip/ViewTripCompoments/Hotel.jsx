@@ -3,23 +3,25 @@ import { Link } from 'react-router-dom';
 import { AiPhoto } from '@/services/AiPhoto';
 
 export default function Hotel({ trip }) {
-  let [photo,setphoto]=useState({});
+  let [photo, setphoto] = useState({});
+  // extract hotels from trip informations so that we can map them 
   const hotels = trip?.tripData?.["Travel Plan"]?.Hotels;
-  console.log("Hotels:", hotels);
-  useEffect(() => {
-          const fetchPhotos = async () => {
-              let photoObj={};
-              for(let hotel of hotels || []){
-                let photo_url=await AiPhoto(hotel.HotelName)
-                // console.log(photo_url)
-                photoObj[hotel.HotelName]=photo_url
-              }
-              setphoto(photoObj);
-          };
+  // console.log("Hotels:", hotels);
   
-          fetchPhotos();
-      }, [trip]);
- 
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      let photoObj = {};
+      for (let hotel of hotels || []) {
+        let photo_url = await AiPhoto(hotel.HotelName)
+        // console.log(photo_url)
+        photoObj[hotel.HotelName] = photo_url
+      }
+      setphoto(photoObj);
+    };
+
+    fetchPhotos();
+  }, [trip]);
+
 
   return (
     <div>
@@ -28,6 +30,7 @@ export default function Hotel({ trip }) {
       </h2>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5'>
         {hotels?.map((item, index) => (
+          // link so tha when user click on hotle it takes to google map 
           <Link
             to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item?.HotelName + ', ' + item?.HotelAddress)}`}
             target='_blank'

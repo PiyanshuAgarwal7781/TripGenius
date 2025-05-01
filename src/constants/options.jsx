@@ -52,8 +52,6 @@ export let budgetList=[
     }
 ]
 
-// export let Prompt=`Generate Travel Plan for Location: {location}, for {Total days} Days for a {traveller} with a {budget} budget. Give me the response strictly in raw JSON format only`
-//  export let  Prompt ="Generate Travel Plan for Location : {location} for {Total days} Days for a  {traveller} with a {budget} budget, give  me Hotels options list with HotelName, Hotel address, Price,  hotel image url, geo coordinates, rating, descriptions and  suggest itinerary with placeName, Place Details, Place Image  Url, Geo Coordinates, ticket Pricing, Time travel each of the  location for days with each day plan with best time to  visit . Give me the response strictly in raw JSON format only.NOTE:Respond with valid JSON only. Do not include any extra explanation or natural language outside the JSON "
 
 export let Prompt = `
 Generate Travel Plan for Location: {location} for {Total days} Days for a {traveller} with a {budget} budget.
