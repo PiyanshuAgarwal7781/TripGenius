@@ -65,10 +65,10 @@ export default function index() {
   .then((result) => {
     setLoading(false);
     if (result) {
-      console.log("AI Response (parsed JSON):", result); // ✅ Optional log
-      SaveAiTrip(result); // ✅ JSON is already parsed
+      console.log("AI Response (parsed JSON):", result); //  Optional log
+      SaveAiTrip(result); //  JSON is already parsed
     } else {
-      toast("Failed to get valid trip data. Please try again."); // ❌ Handle JSON parsing failure
+      toast("Failed to get valid trip data. Please try again."); // Handle JSON parsing failure
     }
   })
   .catch((error) => {

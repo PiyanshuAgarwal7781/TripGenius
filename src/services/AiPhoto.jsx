@@ -14,7 +14,7 @@ export async function AiPhoto(place) {
 
         const photoUrl = data?.photos?.[0]?.src?.original;
 
-        // console.log(`📍 ${place} → 🖼️ ${photoUrl}`);
+        // console.log(` ${place} → ${photoUrl}`);
         return photoUrl || null;
     } catch (err) {
         console.error(` Failed to fetch image for ${place}:`, err);

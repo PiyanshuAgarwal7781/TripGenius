@@ -3,7 +3,8 @@ export async function sendMessage(prompt) {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer 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',
+        // Authorization: 'Bearer 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',
+           Authorization: 'Bearer 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', // updated trip api key as prev was expired 
         'HTTP-Referer': window.location.href,       // Used by OpenRouter for tracking
         'X-Title': 'AI Trip Planner',               // Optional, gives context to OpenRouter
       },
@@ -23,20 +24,20 @@ export async function sendMessage(prompt) {
     }
 
     const data = await response.json();
-    const rawContent = data?.choices?.[0]?.message?.content; // 🟡 Step 1: Get raw content from API
+    const rawContent = data?.choices?.[0]?.message?.content; //  Step 1: Get raw content from API
 
-    // 🆕 Step 2: Try to parse it as JSON (after cleaning)
+    // Step 2: Try to parse it as JSON (after cleaning)
     try {
       const cleaned = rawContent.replace(/^```json|```$/g, '').trim(); // 🧹 Remove ```json or ``` wrappers
-      const parsed = JSON.parse(cleaned); // 🟢 Parse to JSON
-      return parsed; // ✅ Return parsed JSON object
+      const parsed = JSON.parse(cleaned); //  Parse to JSON
+      return parsed; //  Return parsed JSON object
     } catch (jsonError) {
-      console.error("❌ Failed to parse AI response as JSON:", jsonError);
-      return null; // 🔴 Fallback if parsing fails
+      console.error(" Failed to parse AI response as JSON:", jsonError);
+      return null; //  Fallback if parsing fails
     }
 
   } catch (error) {
-    console.error("❌ Error in sendMessage:", error);
+    console.error(" Error in sendMessage:", error);
     return null;
   }
 }
