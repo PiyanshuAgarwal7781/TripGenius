@@ -3,8 +3,8 @@ export async function sendMessage(prompt) {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        // Authorization: 'Bearer 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',
-           Authorization: 'Bearer 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', // updated trip api key as prev was expired 
+        Authorization: 'Bearer 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',
+          //  Authorization: 'Bearer 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', // updated trip api key as prev was expired 
         'HTTP-Referer': window.location.href,       // Used by OpenRouter for tracking
         'X-Title': 'AI Trip Planner',               // Optional, gives context to OpenRouter
       },
